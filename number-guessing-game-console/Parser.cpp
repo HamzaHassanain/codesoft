@@ -1,5 +1,4 @@
 #include "Parser.h"
-#include "UISpecific.h"
 #include <iostream>
 int Parser::ParseInt(std::string input)
 {
@@ -11,13 +10,13 @@ int Parser::ParseInt(std::string input)
         {
             if (!isdigit(input[i]))
             {
-                UISpecific::ShowError(message);
+                std::cerr << message << std::endl;
                 return -1;
             }
         }
         return std::stoi(input);
     }
-    UISpecific::ShowError(message);
+    std::cerr << message << std::endl;
     return -1;
 }
 
@@ -30,5 +29,5 @@ char Parser::ParseChar(std::string input)
         if (isalpha(input[0]))
             return input[0];
     }
-    UISpecific::ShowError(message);
+    std::cerr << message << std::endl;
 }

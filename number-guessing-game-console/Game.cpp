@@ -1,28 +1,27 @@
 #include "Game.h"
 #include "Parser.h"
-#include "UISpecific.h"
 void Game::Initialize()
 {
     Clear();
-    interactor.Write(UISpecific::GetUI_WELCOME());
+    interactor.Write("Welcome To Number Guessing Game");
     Play();
 }
 void Game::Play()
 {
     numberToGuess = GetRandomNumber(1, 1000);
-    interactor.Write(UISpecific::GetUI_GUESS_MESSAGE());
+    interactor.Write("Guess a number between 1 and 1000: ");
 
     while (player.lastGuess != numberToGuess)
     {
         player.gusseCount++;
         Update();
     }
-    interactor.Write(UISpecific::GetUI_CORRECT_GUESS());
-    interactor.Write(UISpecific::GetUI_GUESS_COUNT(player.gusseCount));
-    interactor.Write(UISpecific::GetUI_PLAY_AGAIN());
+    interactor.Write("You guessed the number!");
+    interactor.Write("You did it in " + std::to_string(player.gusseCount) + " guesses!");
+    interactor.Write("Play again? Y/N: ");
 
     char input = Parser::ParseChar(interactor.Read());
-    if (not UISpecific::IsUIPossitve(input))
+    if (not(input == 'y' || input == 'Y'))
         isRunning = false;
 }
 void Game::Update()
@@ -35,18 +34,18 @@ void Game::Update()
     }
     if (player.lastGuess < numberToGuess)
     {
-        interactor.Write(UISpecific::GetUI_GUESS_AGAIN_LOWER());
+        interactor.Write("Low! Guess again:");
     }
     else if (player.lastGuess > numberToGuess)
     {
-        interactor.Write(UISpecific::GetUI_GUESS_AGAIN_HIGHER());
+        interactor.Write("High! Guess again:");
     }
     player.lastGuess = Parser::ParseInt(interactor.Read());
 }
 void Game::Clear()
 {
     player.lastGuess = player.gusseCount = 0;
-    UISpecific::ClearScreen();
+    system("clear");
 }
 void Game::Start()
 {
