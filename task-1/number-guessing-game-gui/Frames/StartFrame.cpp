@@ -56,6 +56,8 @@ void StartFrame::OnStartButtonClicked(wxCommandEvent &evt)
     gameFrame->Show(true);
 
     this->Hide();
+
+    evt.Skip();
 }
 
 StartFrame ::~StartFrame()
