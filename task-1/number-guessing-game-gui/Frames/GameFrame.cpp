@@ -21,7 +21,7 @@ void GameFrame::InitializeComponents()
     currentNumeberPanel = new wxPanel(this, wxID_ANY);
     numbersPanel = new wxPanel(this, wxID_ANY);
 
-    lastFeedback = new wxStaticText(lastFeadbackPanel, wxID_ANY, "Guess A number between 1 and 1000", wxDefaultPosition, wxSize(400, 50), wxALIGN_CENTER);
+    lastFeedback = new wxStaticText(lastFeadbackPanel, wxID_ANY, "Guess A number between 1 and 9999", wxDefaultPosition, wxSize(400, 50), wxALIGN_CENTER);
     currnetNumber = new wxStaticText(currentNumeberPanel, wxID_ANY, GUESS_STRING, wxDefaultPosition, wxSize(400, -1), wxALIGN_CENTER);
 
     guessButton = new wxButton(numbersPanel, wxID_ANY, "Guess", wxDefaultPosition);
@@ -141,7 +141,6 @@ void GameFrame::OnNumbersPanelButtonClicked(wxCommandEvent &evt)
 
     if (currnetNumber)
     {
-        std::cout << "currnetNumber is not null" << std::endl;
     }
     else
     {

@@ -5,7 +5,7 @@ Game::Game()
 }
 void Game::Init()
 {
-    numberToGuess = rand() % 1000 + 1;
+    numberToGuess = rand() % 9999 + 1;
     numberOfGuesses = 0;
     lastGuess = 0;
 
