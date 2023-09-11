@@ -1,1 +1,8 @@
 .vscode
+task-5/image-processing-tool/cmake_install.cmake
+task-5/image-processing-tool/CMakeCache.txt
+task-5/image-processing-tool/CMakeFiles
+task-5/image-processing-tool/ImageProcessing
+task-5/image-processing-tool/ImageProcessing.out
+task-5/image-processing-tool/ImageProcessing.exe
+

@@ -1,7 +1,6 @@
-6
-sdf 0
-asdf 0
-sdf 1
-fdsfsdfsadf 0
-0 0
- 0
+5
+check_code_chef 1
+upsolve_atcoder_contest 1
+Post_on_linked_in 1
+Do_another_task 1
+Do_some_task 0

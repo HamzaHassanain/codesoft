@@ -2,6 +2,11 @@
 #include <wx/colordlg.h>
 #include <wx/fontdlg.h>
 #include "bufferedbitmap.h"
+#include "iostream"
+#include "Utils.h"
+
+const std::string ALLOWED_TYPES = "Image Files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp";
+
 class MainFrame : public wxFrame
 {
     wxImage loadedImage;

@@ -1,55 +1,5 @@
-#include "MainFrame.h"
-const std::string ALLOWED_TYPES = "Image Files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp";
-MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "Image Processing Tool")
-{
-    InitalizeComponents();
-    InitalizeSizers();
-    BindEvents();
-}
-void MainFrame::InitalizeComponents()
-{
-    panel = new wxPanel(this, wxID_ANY);
-    buttonsPanel = new wxPanel(panel, wxID_ANY);
-
-    staticBitmap = new BufferedBitmap(panel, wxID_ANY, wxBitmap(wxSize(1, 1)), wxDefaultPosition, FromDIP(wxSize(500, 200)));
-
-    loadImageButton = new wxButton(buttonsPanel, wxID_ANY, "Load Image");
-    grayScaleButton = new wxButton(buttonsPanel, wxID_ANY, "Gray Scale");
-    blurButton = new wxButton(buttonsPanel, wxID_ANY, "Blur");
-    sharpenButton = new wxButton(buttonsPanel, wxID_ANY, "Sharpen");
-    adjustImageColorButton = new wxButton(buttonsPanel, wxID_ANY, "Adjust Color");
-    adjustImageBrightnessButton = new wxButton(buttonsPanel, wxID_ANY, "Adjust Brightness");
-    adjustImageContrastButton = new wxButton(buttonsPanel, wxID_ANY, "Adjust Contrast");
-    cropImageButton = new wxButton(buttonsPanel, wxID_ANY, "Crop");
-    resizeImageButton = new wxButton(buttonsPanel, wxID_ANY, "Resize");
-    saveImageButton = new wxButton(buttonsPanel, wxID_ANY, "Save");
-}
-void MainFrame::InitalizeSizers()
-{
-    buttonsSizer = new wxBoxSizer(wxVERTICAL);
-    panelSizer = new wxBoxSizer(wxHORIZONTAL);
-    sizer = new wxBoxSizer(wxHORIZONTAL);
-
-    sizer->Add(panel, 1, wxEXPAND | wxALL, 5);
-
-    buttonsSizer->Add(loadImageButton, 0, wxALL, 5);
-    buttonsSizer->Add(grayScaleButton, 0, wxALL, 5);
-    buttonsSizer->Add(blurButton, 0, wxALL, 5);
-    buttonsSizer->Add(sharpenButton, 0, wxALL, 5);
-    buttonsSizer->Add(adjustImageColorButton, 0, wxALL, 5);
-    buttonsSizer->Add(adjustImageBrightnessButton, 0, wxALL, 5);
-    buttonsSizer->Add(adjustImageContrastButton, 0, wxALL, 5);
-    buttonsSizer->Add(cropImageButton, 0, wxALL, 5);
-    buttonsSizer->Add(resizeImageButton, 0, wxALL, 5);
-    buttonsSizer->Add(saveImageButton, 0, wxALL, 5);
-
-    panelSizer->Add(staticBitmap, 4, wxEXPAND | wxALL, 5);
-    panelSizer->Add(buttonsPanel, 1, wxEXPAND | wxALL, 5);
-
-    this->SetSizerAndFit(sizer);
-    panel->SetSizerAndFit(panelSizer);
-    buttonsPanel->SetSizerAndFit(buttonsSizer);
-}
+#include "../../headers/MainFrame.h"
+#include <opencv2/opencv.hpp>
 void MainFrame::BindEvents()
 {
     this->Bind(wxEVT_SIZE, &MainFrame::OnResize, this);
@@ -101,17 +51,38 @@ void MainFrame::OnGrayScaleButtonClick(wxCommandEvent &event)
         wxMessageBox("No image loaded", "Error", wxOK | wxICON_ERROR);
         return;
     }
-
-    loadedImage = loadedImage.ConvertToGreyscale();
+    cv::Mat mat = mat_from_wx(loadedImage);
+    // convert to grayscale
+    cv::cvtColor(mat, mat, cv::COLOR_BGR2GRAY);
+    // convert back to wxImage
+    loadedImage = wx_from_mat(mat);
     SetImage();
 }
 void MainFrame::OnSharpenButtonClick(wxCommandEvent &event)
 {
-    wxMessageBox("Not implemented yet", "Error", wxOK | wxICON_ERROR);
+    if (!loadedImage.IsOk())
+    {
+        wxMessageBox("No image loaded", "Error", wxOK | wxICON_ERROR);
+        return;
+    }
 }
 void MainFrame::OnAdjustImageColorButtonClick(wxCommandEvent &event)
 {
-    wxMessageBox("Not implemented yet", "Error", wxOK | wxICON_ERROR);
+    if (!loadedImage.IsOk())
+    {
+        wxMessageBox("No image loaded", "Error", wxOK | wxICON_ERROR);
+        return;
+    }
+    wxColourDialog dialog(this);
+    if (dialog.ShowModal() == wxID_OK)
+    {
+        wxColourData data = dialog.GetColourData();
+        wxColour colour = data.GetColour();
+        int width = loadedImage.GetWidth();
+        int height = loadedImage.GetHeight();
+
+        SetImage();
+    }
 }
 void MainFrame::OnAdjustImageBrightnessButtonClick(wxCommandEvent &event)
 {
@@ -142,22 +113,7 @@ void MainFrame::OnSaveImageButtonClick(wxCommandEvent &event)
     std::cout << saveFileDialog.GetPath() << std::endl;
     loadedImage.SaveFile(saveFileDialog.GetPath());
 }
-void MainFrame::ResizeImageToFit()
-{
-    // to be implemented
-    SetImage();
-}
-void MainFrame::SetImage()
-{
-    bitmap = wxBitmap(loadedImage);
-    staticBitmap->SetBitmap(bitmap);
-    staticBitmap->Refresh();
-    this->Layout();
-}
-
 void MainFrame::OnResize(wxSizeEvent &event)
 {
-    if (loadedImage.IsOk())
-        ResizeImageToFit();
     event.Skip();
 }
