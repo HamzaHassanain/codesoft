@@ -7,11 +7,11 @@ void MainFrame::InitalizeComponents()
 
     staticBitmap = new BufferedBitmap(panel, wxID_ANY, wxBitmap(wxSize(1, 1)), wxDefaultPosition, FromDIP(wxSize(500, 200)));
 
+    undoButton = new wxButton(buttonsPanel, wxID_ANY, "Undo");
     loadImageButton = new wxButton(buttonsPanel, wxID_ANY, "Load Image");
     grayScaleButton = new wxButton(buttonsPanel, wxID_ANY, "Gray Scale");
     blurButton = new wxButton(buttonsPanel, wxID_ANY, "Blur");
     sharpenButton = new wxButton(buttonsPanel, wxID_ANY, "Sharpen");
-    adjustImageColorButton = new wxButton(buttonsPanel, wxID_ANY, "Adjust Color");
     adjustImageBrightnessButton = new wxButton(buttonsPanel, wxID_ANY, "Adjust Brightness");
     adjustImageContrastButton = new wxButton(buttonsPanel, wxID_ANY, "Adjust Contrast");
     cropImageButton = new wxButton(buttonsPanel, wxID_ANY, "Crop");
@@ -26,11 +26,11 @@ void MainFrame::InitalizeSizers()
 
     sizer->Add(panel, 1, wxEXPAND | wxALL, 5);
 
+    buttonsSizer->Add(undoButton, 0, wxALL, 5);
     buttonsSizer->Add(loadImageButton, 0, wxALL, 5);
     buttonsSizer->Add(grayScaleButton, 0, wxALL, 5);
     buttonsSizer->Add(blurButton, 0, wxALL, 5);
     buttonsSizer->Add(sharpenButton, 0, wxALL, 5);
-    buttonsSizer->Add(adjustImageColorButton, 0, wxALL, 5);
     buttonsSizer->Add(adjustImageBrightnessButton, 0, wxALL, 5);
     buttonsSizer->Add(adjustImageContrastButton, 0, wxALL, 5);
     buttonsSizer->Add(cropImageButton, 0, wxALL, 5);

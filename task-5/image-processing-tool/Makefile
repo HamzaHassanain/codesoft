@@ -153,6 +153,78 @@ App.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/App.cpp.s
 .PHONY : App.cpp.s
 
+src/BlurDialog.o: src/BlurDialog.cpp.o
+.PHONY : src/BlurDialog.o
+
+# target to build an object file
+src/BlurDialog.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/BlurDialog.cpp.o
+.PHONY : src/BlurDialog.cpp.o
+
+src/BlurDialog.i: src/BlurDialog.cpp.i
+.PHONY : src/BlurDialog.i
+
+# target to preprocess a source file
+src/BlurDialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/BlurDialog.cpp.i
+.PHONY : src/BlurDialog.cpp.i
+
+src/BlurDialog.s: src/BlurDialog.cpp.s
+.PHONY : src/BlurDialog.s
+
+# target to generate assembly for a file
+src/BlurDialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/BlurDialog.cpp.s
+.PHONY : src/BlurDialog.cpp.s
+
+src/BrightnessDialog.o: src/BrightnessDialog.cpp.o
+.PHONY : src/BrightnessDialog.o
+
+# target to build an object file
+src/BrightnessDialog.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/BrightnessDialog.cpp.o
+.PHONY : src/BrightnessDialog.cpp.o
+
+src/BrightnessDialog.i: src/BrightnessDialog.cpp.i
+.PHONY : src/BrightnessDialog.i
+
+# target to preprocess a source file
+src/BrightnessDialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/BrightnessDialog.cpp.i
+.PHONY : src/BrightnessDialog.cpp.i
+
+src/BrightnessDialog.s: src/BrightnessDialog.cpp.s
+.PHONY : src/BrightnessDialog.s
+
+# target to generate assembly for a file
+src/BrightnessDialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/BrightnessDialog.cpp.s
+.PHONY : src/BrightnessDialog.cpp.s
+
+src/ContrastDialog.o: src/ContrastDialog.cpp.o
+.PHONY : src/ContrastDialog.o
+
+# target to build an object file
+src/ContrastDialog.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/ContrastDialog.cpp.o
+.PHONY : src/ContrastDialog.cpp.o
+
+src/ContrastDialog.i: src/ContrastDialog.cpp.i
+.PHONY : src/ContrastDialog.i
+
+# target to preprocess a source file
+src/ContrastDialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/ContrastDialog.cpp.i
+.PHONY : src/ContrastDialog.cpp.i
+
+src/ContrastDialog.s: src/ContrastDialog.cpp.s
+.PHONY : src/ContrastDialog.s
+
+# target to generate assembly for a file
+src/ContrastDialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/ContrastDialog.cpp.s
+.PHONY : src/ContrastDialog.cpp.s
+
 src/MainFrame.o: src/MainFrame.cpp.o
 .PHONY : src/MainFrame.o
 
@@ -285,6 +357,15 @@ help:
 	@echo "... App.o"
 	@echo "... App.i"
 	@echo "... App.s"
+	@echo "... src/BlurDialog.o"
+	@echo "... src/BlurDialog.i"
+	@echo "... src/BlurDialog.s"
+	@echo "... src/BrightnessDialog.o"
+	@echo "... src/BrightnessDialog.i"
+	@echo "... src/BrightnessDialog.s"
+	@echo "... src/ContrastDialog.o"
+	@echo "... src/ContrastDialog.i"
+	@echo "... src/ContrastDialog.s"
 	@echo "... src/MainFrame.o"
 	@echo "... src/MainFrame.i"
 	@echo "... src/MainFrame.s"

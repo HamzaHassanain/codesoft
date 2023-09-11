@@ -1,0 +1,14 @@
+#pragma once
+
+#include <wx/wx.h>
+
+class ResizeDialog : public wxDialog
+{
+private:
+    wxTextCtrl *width;
+    wxTextCtrl *height;
+
+public:
+    ResizeDialog(wxWindow *parent, wxWindowID id, const wxString &title);
+    std::vector<int> GetValue();
+};

@@ -3,6 +3,7 @@
 #include <wx/fontdlg.h>
 #include "bufferedbitmap.h"
 #include "iostream"
+#include "vector"
 #include "Utils.h"
 
 const std::string ALLOWED_TYPES = "Image Files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp";
@@ -10,6 +11,7 @@ const std::string ALLOWED_TYPES = "Image Files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;
 class MainFrame : public wxFrame
 {
     wxImage loadedImage;
+    std::vector<wxImage> prevImages;
     BufferedBitmap *staticBitmap;
     wxBitmap bitmap;
 
@@ -20,12 +22,12 @@ class MainFrame : public wxFrame
     wxButton *grayScaleButton;
     wxButton *blurButton;
     wxButton *sharpenButton;
-    wxButton *adjustImageColorButton;
     wxButton *adjustImageBrightnessButton;
     wxButton *adjustImageContrastButton;
     wxButton *cropImageButton;
     wxButton *resizeImageButton;
     wxButton *saveImageButton;
+    wxButton *undoButton;
 
     wxBoxSizer *sizer;
     wxBoxSizer *panelSizer;
@@ -47,7 +49,7 @@ class MainFrame : public wxFrame
     void OnCropImageButtonClick(wxCommandEvent &event);
     void OnResizeImageButtonClick(wxCommandEvent &event);
     void OnSaveImageButtonClick(wxCommandEvent &event);
-
+    void OnUndoButtonClick(wxCommandEvent &event);
     void ResizeImageToFit();
     void SetImage();
 

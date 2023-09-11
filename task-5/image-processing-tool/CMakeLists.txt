@@ -9,9 +9,15 @@ set(SOURCES
     src/MainFrame/InitUI.cpp
     src/MainFrame/Helpers.cpp
     src/MainFrame/EventHandlers.cpp
+    src/BrightnessDialog.cpp
+    src/ContrastDialog.cpp
+    src/BlurDialog.cpp
     src/Utils.cpp
 
     headers/MainFrame.h
+    headers/BrightnessDialog.h
+    headers/ContrastDialog.h
+    headers/BlurDialog.h
     headers/Utils.h
     headers/bufferedbitmap.h
     App.cpp
