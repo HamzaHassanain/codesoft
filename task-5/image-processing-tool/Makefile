@@ -129,29 +129,29 @@ ImageProcessing/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/build
 .PHONY : ImageProcessing/fast
 
-App.o: App.cpp.o
-.PHONY : App.o
+src/App.o: src/App.cpp.o
+.PHONY : src/App.o
 
 # target to build an object file
-App.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/App.cpp.o
-.PHONY : App.cpp.o
+src/App.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/App.cpp.o
+.PHONY : src/App.cpp.o
 
-App.i: App.cpp.i
-.PHONY : App.i
+src/App.i: src/App.cpp.i
+.PHONY : src/App.i
 
 # target to preprocess a source file
-App.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/App.cpp.i
-.PHONY : App.cpp.i
+src/App.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/App.cpp.i
+.PHONY : src/App.cpp.i
 
-App.s: App.cpp.s
-.PHONY : App.s
+src/App.s: src/App.cpp.s
+.PHONY : src/App.s
 
 # target to generate assembly for a file
-App.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/App.cpp.s
-.PHONY : App.cpp.s
+src/App.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/App.cpp.s
+.PHONY : src/App.cpp.s
 
 src/BlurDialog.o: src/BlurDialog.cpp.o
 .PHONY : src/BlurDialog.o
@@ -224,6 +224,30 @@ src/ContrastDialog.s: src/ContrastDialog.cpp.s
 src/ContrastDialog.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/ContrastDialog.cpp.s
 .PHONY : src/ContrastDialog.cpp.s
+
+src/CropDialog.o: src/CropDialog.cpp.o
+.PHONY : src/CropDialog.o
+
+# target to build an object file
+src/CropDialog.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/CropDialog.cpp.o
+.PHONY : src/CropDialog.cpp.o
+
+src/CropDialog.i: src/CropDialog.cpp.i
+.PHONY : src/CropDialog.i
+
+# target to preprocess a source file
+src/CropDialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/CropDialog.cpp.i
+.PHONY : src/CropDialog.cpp.i
+
+src/CropDialog.s: src/CropDialog.cpp.s
+.PHONY : src/CropDialog.s
+
+# target to generate assembly for a file
+src/CropDialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/CropDialog.cpp.s
+.PHONY : src/CropDialog.cpp.s
 
 src/MainFrame.o: src/MainFrame.cpp.o
 .PHONY : src/MainFrame.o
@@ -321,6 +345,30 @@ src/MainFrame/InitUI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/MainFrame/InitUI.cpp.s
 .PHONY : src/MainFrame/InitUI.cpp.s
 
+src/ResizeDialog.o: src/ResizeDialog.cpp.o
+.PHONY : src/ResizeDialog.o
+
+# target to build an object file
+src/ResizeDialog.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/ResizeDialog.cpp.o
+.PHONY : src/ResizeDialog.cpp.o
+
+src/ResizeDialog.i: src/ResizeDialog.cpp.i
+.PHONY : src/ResizeDialog.i
+
+# target to preprocess a source file
+src/ResizeDialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/ResizeDialog.cpp.i
+.PHONY : src/ResizeDialog.cpp.i
+
+src/ResizeDialog.s: src/ResizeDialog.cpp.s
+.PHONY : src/ResizeDialog.s
+
+# target to generate assembly for a file
+src/ResizeDialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageProcessing.dir/build.make CMakeFiles/ImageProcessing.dir/src/ResizeDialog.cpp.s
+.PHONY : src/ResizeDialog.cpp.s
+
 src/Utils.o: src/Utils.cpp.o
 .PHONY : src/Utils.o
 
@@ -354,9 +402,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ImageProcessing"
-	@echo "... App.o"
-	@echo "... App.i"
-	@echo "... App.s"
+	@echo "... src/App.o"
+	@echo "... src/App.i"
+	@echo "... src/App.s"
 	@echo "... src/BlurDialog.o"
 	@echo "... src/BlurDialog.i"
 	@echo "... src/BlurDialog.s"
@@ -366,6 +414,9 @@ help:
 	@echo "... src/ContrastDialog.o"
 	@echo "... src/ContrastDialog.i"
 	@echo "... src/ContrastDialog.s"
+	@echo "... src/CropDialog.o"
+	@echo "... src/CropDialog.i"
+	@echo "... src/CropDialog.s"
 	@echo "... src/MainFrame.o"
 	@echo "... src/MainFrame.i"
 	@echo "... src/MainFrame.s"
@@ -378,6 +429,9 @@ help:
 	@echo "... src/MainFrame/InitUI.o"
 	@echo "... src/MainFrame/InitUI.i"
 	@echo "... src/MainFrame/InitUI.s"
+	@echo "... src/ResizeDialog.o"
+	@echo "... src/ResizeDialog.i"
+	@echo "... src/ResizeDialog.s"
 	@echo "... src/Utils.o"
 	@echo "... src/Utils.i"
 	@echo "... src/Utils.s"

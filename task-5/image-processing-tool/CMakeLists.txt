@@ -12,15 +12,19 @@ set(SOURCES
     src/BrightnessDialog.cpp
     src/ContrastDialog.cpp
     src/BlurDialog.cpp
+    src/ResizeDialog.cpp
+    src/CropDialog.cpp
     src/Utils.cpp
+    src/App.cpp
 
     headers/MainFrame.h
     headers/BrightnessDialog.h
     headers/ContrastDialog.h
     headers/BlurDialog.h
+    headers/ResizeDialog.h
+    headers/CropDialog.h
     headers/Utils.h
     headers/bufferedbitmap.h
-    App.cpp
 )
 
 if (WIN32)

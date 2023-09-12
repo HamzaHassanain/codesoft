@@ -21,7 +21,6 @@ class MainFrame : public wxFrame
     wxButton *loadImageButton;
     wxButton *grayScaleButton;
     wxButton *blurButton;
-    wxButton *sharpenButton;
     wxButton *adjustImageBrightnessButton;
     wxButton *adjustImageContrastButton;
     wxButton *cropImageButton;
@@ -42,7 +41,6 @@ class MainFrame : public wxFrame
     void OnLoadImageButtonClick(wxCommandEvent &event);
     void OnGrayScaleButtonClick(wxCommandEvent &event);
     void OnBlurButtonClick(wxCommandEvent &event);
-    void OnSharpenButtonClick(wxCommandEvent &event);
     void OnAdjustImageColorButtonClick(wxCommandEvent &event);
     void OnAdjustImageBrightnessButtonClick(wxCommandEvent &event);
     void OnAdjustImageContrastButtonClick(wxCommandEvent &event);

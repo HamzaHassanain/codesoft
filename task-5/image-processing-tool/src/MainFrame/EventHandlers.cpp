@@ -3,6 +3,9 @@
 #include "../../headers/BrightnessDialog.h"
 #include "../../headers/BlurDialog.h"
 #include "../../headers/ContrastDialog.h"
+#include "../../headers/ResizeDialog.h"
+#include "../../headers/CropDialog.h"
+
 void MainFrame::BindEvents()
 {
     this->Bind(wxEVT_SIZE, &MainFrame::OnResize, this);
@@ -10,7 +13,6 @@ void MainFrame::BindEvents()
     loadImageButton->Bind(wxEVT_BUTTON, &MainFrame::OnLoadImageButtonClick, this);
     grayScaleButton->Bind(wxEVT_BUTTON, &MainFrame::OnGrayScaleButtonClick, this);
     blurButton->Bind(wxEVT_BUTTON, &MainFrame::OnBlurButtonClick, this);
-    sharpenButton->Bind(wxEVT_BUTTON, &MainFrame::OnSharpenButtonClick, this);
     adjustImageBrightnessButton->Bind(wxEVT_BUTTON, &MainFrame::OnAdjustImageBrightnessButtonClick, this);
     adjustImageContrastButton->Bind(wxEVT_BUTTON, &MainFrame::OnAdjustImageContrastButtonClick, this);
     cropImageButton->Bind(wxEVT_BUTTON, &MainFrame::OnCropImageButtonClick, this);
@@ -76,14 +78,7 @@ void MainFrame::OnGrayScaleButtonClick(wxCommandEvent &event)
     loadedImage = wx_from_mat(mat);
     SetImage();
 }
-void MainFrame::OnSharpenButtonClick(wxCommandEvent &event)
-{
-    if (!loadedImage.IsOk())
-    {
-        wxMessageBox("No image loaded", "Error", wxOK | wxICON_ERROR);
-        return;
-    }
-}
+
 void MainFrame::OnAdjustImageColorButtonClick(wxCommandEvent &event)
 {
     if (!loadedImage.IsOk())
@@ -91,16 +86,16 @@ void MainFrame::OnAdjustImageColorButtonClick(wxCommandEvent &event)
         wxMessageBox("No image loaded", "Error", wxOK | wxICON_ERROR);
         return;
     }
-    wxColourDialog dialog(this);
-    if (dialog.ShowModal() == wxID_OK)
-    {
-        wxColourData data = dialog.GetColourData();
-        wxColour colour = data.GetColour();
-        int width = loadedImage.GetWidth();
-        int height = loadedImage.GetHeight();
+    // wxColourDialog dialog(this);
+    // if (dialog.ShowModal() == wxID_OK)
+    // {
+    //     wxColourData data = dialog.GetColourData();
+    //     wxColour colour = data.GetColour();
+    //     int width = loadedImage.GetWidth();
+    //     int height = loadedImage.GetHeight();
 
-        SetImage();
-    }
+    //     SetImage();
+    // }
 }
 void MainFrame::OnAdjustImageBrightnessButtonClick(wxCommandEvent &event)
 {
@@ -150,11 +145,58 @@ void MainFrame::OnAdjustImageContrastButtonClick(wxCommandEvent &event)
 }
 void MainFrame::OnCropImageButtonClick(wxCommandEvent &event)
 {
-    wxMessageBox("Not implemented yet", "Error", wxOK | wxICON_ERROR);
+    if (!loadedImage.IsOk())
+    {
+        wxMessageBox("No image loaded", "Error", wxOK | wxICON_ERROR);
+        return;
+    }
+
+    CropDialog dialog(this, wxID_ANY, "Crop");
+    if (dialog.ShowModal() == wxID_OK)
+    {
+        prevImages.push_back(loadedImage.Copy());
+
+        std::vector<int> values = dialog.GetValue();
+
+        int top_x = values[0];
+        int top_y = values[1];
+        int bottom_x = values[2];
+        int bottom_y = values[3];
+
+        int width = bottom_x - top_x;
+        int height = bottom_y - top_y;
+
+        std::cout << width << " " << height << std::endl;
+        cv::Mat corped;
+        cv::Mat mat = mat_from_wx(loadedImage);
+        cv::Rect roi(top_x, top_y, width, height);
+        corped = mat(roi);
+        loadedImage = wx_from_mat(corped);
+
+        SetImage();
+    }
 }
 void MainFrame::OnResizeImageButtonClick(wxCommandEvent &event)
 {
-    wxMessageBox("Not implemented yet", "Error", wxOK | wxICON_ERROR);
+    if (!loadedImage.IsOk())
+    {
+        wxMessageBox("No image loaded", "Error", wxOK | wxICON_ERROR);
+        return;
+    }
+    ResizeDialog dialog(this, wxID_ANY, "Resize");
+
+    if (dialog.ShowModal() == wxID_OK)
+    {
+        prevImages.push_back(loadedImage.Copy());
+
+        std::vector<int> values = dialog.GetValue();
+        int width = values[0];
+        int height = values[1];
+
+        loadedImage = loadedImage.Scale(width, height);
+
+        SetImage();
+    }
 }
 void MainFrame::OnSaveImageButtonClick(wxCommandEvent &event)
 {
